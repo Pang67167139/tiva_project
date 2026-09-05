@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>{% block title %}Tiva Home - บ้านที่ใช่ สำหรับชีวิตที่ใช่คุณ{% endblock %}</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --earth-brown: #6f6054ef;
+            --earth-coffee: #a5a682f2;
+            --earth-tan: #DCC7A1;
+            --earth-sage: #7D8471;
+            --earth-terracotta: #C17C56;
+            --earth-beige: #F2EEE6;
+            --earth-olive: #708238;
+            --earth-sand: #C2B280;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            /* เปลี่ยนสีเมื่อคลิกลิงก์ */
+            outline-color: var(--earth-terracotta);
+        }
+        
+        /* เปลี่ยนสีเมื่อคลิกลิงก์ */
+        a:focus, a:active {
+            color: var(--earth-terracotta);
+            outline-color: var(--earth-terracotta);
+            text-decoration: none;
+        }
+        
+        /* เปลี่ยนสีเมื่อคลิกลิงก์ในโลโก้ */
+        .logo:focus, .logo:active {
+            color: var(--earth-tan);
+            outline: none;
+            text-shadow: 0 0 8px rgba(220, 199, 161, 0.6);
+        }
+        
+        /* เปลี่ยนสีเมื่อคลิกปุ่ม */
+        .btn:focus, .btn:active {
+            outline: none;
+            box-shadow: 0 0 0 0.25rem rgba(193, 124, 86, 0.5) !important;
+        }
+        
+        /* เปลี่ยนสีเมื่อคลิก input */
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--earth-terracotta) !important;
+            box-shadow: 0 0 0 0.25rem rgba(193, 124, 86, 0.25) !important;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--earth-brown), var(--earth-coffee));
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: white;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover {
+            color: var(--earth-tan);
+            text-shadow: 0 0 5px rgba(220, 199, 161, 0.4);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--earth-tan);
+            text-decoration: underline;
+        }
+        
+        /* Mobile Menu (CSS-only) */
+        .mobile-menu-toggle {
+            display: none;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            color: white;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+        
+        .hero-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--earth-brown);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--earth-coffee);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--earth-brown);
+            color: var(--earth-brown);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--earth-brown);
+            color: white;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--earth-coffee);
+        }
+        
+        /* Property Cards */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .property-card {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .property-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+        
+        .property-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .property-content {
+            padding: 1.5rem;
+        }
+        
+        .property-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--earth-coffee);
+        }
+        
+        .property-location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        .property-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .property-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        .property-price {
+            font-weight: bold;
+            font-size: 1.125rem;
+            color: var(--earth-brown);
+        }
+        
+        /* Features */
+        .features-section {
+            background-color: var(--earth-beige);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            color: var(--earth-brown);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--earth-coffee);
+        }
+        
+        .feature-description {
+            color: #666;
+        }
+        
+        /* CTA Sections */
+        .cta-section {
+            background-color: var(--earth-beige);
+            padding: 3rem;
+            border-radius: 0.5rem;
+            margin: 4rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .cta-section {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+        
+        .cta-content {
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .cta-content {
+                margin-bottom: 0;
+            }
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--earth-coffee);
+        }
+        
+        .cta-description {
+            color: rgba(111, 78, 55, 0.8);
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--earth-coffee);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link {
+            color: var(--earth-tan);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* CSS-only Mobile Menu */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--earth-brown);
+                padding: 1rem;
+                z-index: 100;
+            }
+            
+            .mobile-menu-toggle:checked ~ nav ul {
+                display: flex;
+            }
+            
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+        
+        /* Success Message for Form */
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .success-message-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Show success message when form is submitted (using :target) */
+        #success:target .success-message {
+            display: block;
+        }
+        
+        #success:target form {
+            display: none;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="{% url 'index' %}" class="logo">Tiva Home</a>
+            
+            <!-- CSS-only mobile menu -->
+            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-toggle" hidden>
+            <label for="mobile-menu-toggle" class="mobile-menu-btn">☰</label>
+            
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}">หน้าแรก</a></li>
+                    <li><a href="{% url 'about' %}">เกี่ยวกับเรา</a></li>
+                    <li><a href="{% url 'register' %}">ลงทะเบียน</a></li>
+                    <li><a href="#">ติดต่อ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-content">© 2025 Tiva Home. สงวนลิขสิทธิ์</p>
+            <p class="footer-content">
+                ติดต่อ: <a href="mailto:contact@tivahome.com" class="footer-link">contact@tivahome.com</a> | 
+                โทร: 02-123-4567
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

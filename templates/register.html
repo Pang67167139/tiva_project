@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}ลงทะเบียน - Tiva Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style="height: 30vh; background-image: url('https://areeya.co.th/wp-content/uploads/2023/05/c6-18-scaled.jpg');">
+    <div class="hero-content">
+        <div class="hero-caption">
+            <h1 class="hero-title">ลงทะเบียนเพื่อรับสิทธิพิเศษ</h1>
+            <p class="hero-description">กรอกข้อมูลเพื่อรับข้อเสนอพิเศษและคำปรึกษาฟรี</p>
+        </div>
+    </div>
+</section>
+
+<!-- Registration Form -->
+<div class="container py-5" id="success">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Success Message (shown when form is submitted using :target CSS selector) -->
+            <div class="success-message">
+                <div class="success-message-title">ลงทะเบียนสำเร็จ</div>
+                <div>ขอบคุณสำหรับการลงทะเบียน เราจะติดต่อกลับโดยเร็วที่สุด</div>
+                <div class="mt-3">
+                    <a href="{% url 'index' %}" class="btn btn-primary">กลับสู่หน้าหลัก</a>
+                </div>
+            </div>
+            
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-earth-brown py-3" style="color: var(--earth-tan);">
+                    <h2 class="card-title text-center mb-0" style="font-weight: 400; letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">ฟอร์มลงทะเบียนรับข้อมูลบ้าน</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form action="#success" method="get">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="name" class="form-label">ชื่อ-นามสกุล</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="กรุณากรอกชื่อ-นามสกุล" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">อายุ</label>
+                                <input type="number" id="age" name="age" class="form-control" placeholder="กรุณากรอกอายุ" required>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <label for="phone" class="form-label">เบอร์โทรศัพท์</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="กรุณากรอกเบอร์โทรศัพท์" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">อีเมล</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="กรุณากรอกอีเมล" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">ประเภทที่อยู่อาศัยที่สนใจ</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="propertyType" id="house" value="house" required>
+                                <label class="form-check-label" for="house">บ้านเดี่ยว</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="propertyType" id="townhouse" value="townhouse">
+                                <label class="form-check-label" for="townhouse">ทาวน์โฮม</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="propertyType" id="condo" value="condo">
+                                <label class="form-check-label" for="condo">คอนโดมิเนียม</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="budget" class="form-label">งบประมาณ</label>
+                            <select id="budget" name="budget" class="form-select" required>
+                                <option value="" disabled selected>เลือกงบประมาณ</option>
+                                <option value="1-3">1-3 ล้านบาท</option>
+                                <option value="3-5">3-5 ล้านบาท</option>
+                                <option value="5-10">5-10 ล้านบาท</option>
+                                <option value="10+">มากกว่า 10 ล้านบาท</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="location" class="form-label">ทำเลที่สนใจ</label>
+                            <select id="location" name="location" class="form-select" required>
+                                <option value="" disabled selected>เลือกทำเลที่สนใจ</option>
+                                <option value="bangkok">กรุงเทพมหานคร</option>
+                                <option value="nonthaburi">นนทบุรี</option>
+                                <option value="pathumthani">ปทุมธานี</option>
+                                <option value="samutprakarn">สมุทรปราการ</option>
+                                <option value="other">อื่นๆ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="notifications" name="notifications" checked>
+                            <label class="form-check-label" for="notifications">
+                                ฉันต้องการรับข้อมูลข่าวสารและโปรโมชั่นพิเศษจาก Tiva Home
+                            </label>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="reset" class="btn btn-outline-secondary">ล้างข้อมูล</button>
+                            <button type="submit" class="btn btn-primary">ลงทะเบียน</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

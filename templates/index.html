@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}Tiva Home - บ้านที่ใช่ สำหรับชีวิตที่ใช่คุณ{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Static Hero Image instead of Carousel */
+    .hero {
+        background-image: url('https://areeya.co.th/wp-content/uploads/2023/05/c7-10-scaled.jpg');
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section (Static) -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-caption">
+            <h1 class="hero-title">ยินดีต้อนรับสู่ Tiva Home</h1>
+            <p class="hero-description">บ้านที่ใช่ สำหรับชีวิตที่ใช่คุณ</p>
+            <a href="{% url 'register' %}" class="btn btn-primary">ลงทะเบียนรับสิทธิพิเศษ</a>
+        </div>
+    </div>
+</section>
+{% comment %}
+<section>   
+<div>ส่วนนี้จะไม่แสดงบนเว็บ</div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">รหัสประชากร</th>
+                <th scope="col">ชื่อประชากร</th>
+                <th scope="col">วันที่เพิ่มข้อมูล</th>
+                <th scope="col">อายุ</th>
+                <th scope="col">แก้ไข</th>
+                <th scope="col">ลบ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in all_person %}
+            <tr>
+                <th scope="row">{{ person.id }}</th>
+                <td>{{ person.name }}</td>
+                <td>{{ person.date }}</td>
+                <td>{{ person.age }}</td>
+                <td><a href="#" class="btn btn-warning">แก้ไข</a></td>
+                <td><a href="#" class="btn btn-danger">ลบ</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endcomment %}
+
+<!-- Featured Properties -->
+<section>
+    <div class="container">
+        <h2 class="section-title">บ้านแนะนำ</h2>
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('https://areeya.co.th/wp-content/uploads/2023/05/c3-43.jpg');"></div>
+                <div class="property-content">
+                    <h3 class="property-title">บ้านเดี่ยว 2 ชั้น มินิมอล</h3>
+                    <div class="property-location">
+                        <span>📍</span>
+                        <span>ลาดพร้าว, กรุงเทพฯ</span>
+                    </div>
+                    <p class="property-description">บ้านเดี่ยวสไตล์มินิมอล ดีไซน์ทันสมัย พื้นที่ใช้สอยกว้างขวาง</p>
+                    <div class="property-features">
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="property-feature">
+                                <span>🛏️</span>
+                                <span>3</span>
+                            </div>
+                            <div class="property-feature">
+                                <span>🚿</span>
+                                <span>2</span>
+                            </div>
+                            <div class="property-feature">
+                                <span>📏</span>
+                                <span>150 ตร.ม.</span>
+                            </div>
+                        </div>
+                        <div class="property-price">฿5,900,000</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('https://areeya.co.th/wp-content/uploads/2023/05/nora-chaiyaphruek-register-t1.jpg');"></div>
+                <div class="property-content">
+                    <h3 class="property-title">ทาวน์โฮม โมเดิร์น</h3>
+                    <div class="property-location">
+                        <span>📍</span>
+                        <span>บางนา, กรุงเทพฯ</span>
+                    </div>
+                    <p class="property-description">ทาวน์โฮมสไตล์โมเดิร์น ตกแต่งเรียบง่าย ใกล้ทางด่วน</p>
+                    <div class="property-features">
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="property-feature">
+                                <span>🛏️</span>
+                                <span>2</span>
+                            </div>
+                            <div class="property-feature">
+                                <span>🚿</span>
+                                <span>2</span>
+                            </div>
+                            <div class="property-feature">
+                                <span>📏</span>
+                                <span>120 ตร.ม.</span>
+                            </div>
+                        </div>
+                        <div class="property-price">฿3,500,000</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3spSaL_20-BTi1U6GqvjEHfaoA8tUrsdvPOayXvX0lg&s=10');"></div>
+                <div class="property-content">
+                    <h3 class="property-title">คอนโดมิเนียม ลักชัวรี่</h3>
+                    <div class="property-location">
+                        <span>📍</span>
+                        <span>สุขุมวิท, กรุงเทพฯ</span>
+                    </div>
+                    <p class="property-description">คอนโดหรูใจกลางเมือง วิวสวย สิ่งอำนวยความสะดวกครบครัน</p>
+                    <div class="property-features">
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="property-feature">
+                                <span>🛏️</span>
+                                <span>1</span>
+                            </div>
+                            <div class="property-feature">
+                                <span>🚿</span>
+                                <span>1</span>
+                            </div>
+                            <div class="property-feature">
+                                <span>📏</span>
+                                <span>45 ตร.ม.</span>
+                            </div>
+                        </div>
+                        <div class="property-price">฿4,200,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" class="btn btn-outline">ดูบ้านทั้งหมด →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section>
+    <div class="container">
+        <h2 class="section-title">ทำไมต้องเลือก Tiva Home</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3 class="feature-title">ทำเลคุณภาพ</h3>
+                <p class="feature-description">บ้านทุกหลังอยู่ในทำเลที่เดินทางสะดวก ใกล้สิ่งอำนวยความสะดวกครบครัน</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3 class="feature-title">ดีไซน์มินิมอล</h3>
+                <p class="feature-description">ออกแบบอย่างพิถีพิถัน เน้นความเรียบง่าย ทันสมัย และฟังก์ชันการใช้งานที่ลงตัว</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <h3 class="feature-title">คุณภาพเหนือระดับ</h3>
+                <p class="feature-description">ใช้วัสดุคุณภาพสูง ผ่านการตรวจสอบมาตรฐานทุกขั้นตอน รับประกันคุณภาพ</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About CTA -->
+<section>
+    <div class="container">
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">อยากรู้จัก Tiva Home มากขึ้น?</h2>
+                <p class="cta-description">เรียนรู้เพิ่มเติมเกี่ยวกับเรา บริการของเรา และทีมงานคุณภาพ</p>
+            </div>
+            <a href="{% url 'about' %}" class="btn btn-outline">เกี่ยวกับเรา</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

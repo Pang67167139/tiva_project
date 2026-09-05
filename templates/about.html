@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}เกี่ยวกับเรา - Tiva Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style="height: 40vh; background-image: url('https://img.home.co.th/images/img_v/img_Directory/Project/img_Directory_20122021105758AM.jpg');">
+    <div class="hero-content">
+        <div class="hero-caption">
+            <h1 class="hero-title">เกี่ยวกับเรา</h1>
+            <p class="hero-description">Tiva Home - ผู้นำด้านอสังหาริมทรัพย์คุณภาพเพื่อชีวิตที่ดีกว่า</p>
+        </div>
+    </div>
+</section>
+
+<!-- Company Introduction -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="mb-4">ประวัติความเป็นมา</h2>
+                <p class="mb-3">
+                    Tiva Home ก่อตั้งขึ้นในปี 2560 ด้วยวิสัยทัศน์ที่จะสร้างบ้านคุณภาพในราคาที่เข้าถึงได้
+                    เรามุ่งมั่นพัฒนาโครงการที่ตอบโจทย์ความต้องการของผู้อยู่อาศัยอย่างแท้จริง
+                </p>
+                <p class="mb-3">
+                    ด้วยประสบการณ์กว่า 10 ปีในวงการอสังหาริมทรัพย์ ทีมงานของเรามีความเชี่ยวชาญในการออกแบบและพัฒนาที่อยู่อาศัยที่มีคุณภาพ
+                    ใส่ใจในทุกรายละเอียด ตั้งแต่การเลือกทำเลที่ตั้ง การออกแบบพื้นที่ใช้สอย ไปจนถึงการเลือกใช้วัสดุคุณภาพสูง
+                </p>
+                <p>
+                    เรามีความภูมิใจที่ได้สร้างบ้านให้กับครอบครัวไทยมาแล้วกว่า 1,000 ครอบครัว และยังคงมุ่งมั่นพัฒนาโครงการใหม่ๆ อย่างต่อเนื่อง
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div style="height: 400px; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <img src="https://www.theurbanproperty.com/upload-backend/about-us/33e9f0338fa6f0a817161636b557e6f1.jpg" alt="Tiva Home Office" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services -->
+<section style="background-color: var(--earth-beige);">
+    <div class="container">
+        <h2 class="section-title">บริการของเรา</h2>
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('https://areeya.co.th/wp-content/uploads/2023/05/c3-43.jpg');"></div>
+                <div class="property-content">
+                    <h3 class="property-title">บ้านเดี่ยว</h3>
+                    <p class="property-description">บ้านเดี่ยวดีไซน์มินิมอล พื้นที่ใช้สอยกว้างขวาง เหมาะสำหรับครอบครัวที่ต้องการความเป็นส่วนตัว</p>
+                </div>
+            </div>
+            
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('https://img.home.co.th/images/img_v/img_Directory/Gallery/img_Directory_20122021105810AM.jpg');"></div>
+                <div class="property-content">
+                    <h3 class="property-title">ทาวน์โฮม</h3>
+                    <p class="property-description">ทาวน์โฮมสไตล์โมเดิร์น ฟังก์ชันครบครัน ทำเลดี เดินทางสะดวก เหมาะสำหรับครอบครัวเริ่มต้น</p>
+                </div>
+            </div>
+            
+            <div class="property-card">
+                <div class="property-image" style="background-image: url('https://www.sansiri.com/media/i3jf0chb/via-61-condo-concept-1200x800.webp');"></div>
+                <div class="property-content">
+                    <h3 class="property-title">คอนโดมิเนียม</h3>
+                    <p class="property-description">คอนโดมิเนียมใจกลางเมือง ใกล้รถไฟฟ้า สิ่งอำนวยความสะดวกครบครัน เหมาะสำหรับคนรุ่นใหม่</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Registration CTA -->
+<section>
+    <div class="container">
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">สนใจโครงการของเรา?</h2>
+                <p class="cta-description">ลงทะเบียนเพื่อรับข้อมูลโครงการและสิทธิพิเศษ</p>
+            </div>
+            <a href="{% url 'register' %}" class="btn btn-primary">ลงทะเบียนเลย</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
